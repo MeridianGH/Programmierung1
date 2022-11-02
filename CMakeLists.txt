@@ -1,6 +1,16 @@
 cmake_minimum_required(VERSION 3.23)
 project(Programmierung1 C)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -pedantic -std=c99")
 
 add_executable(helloWorld src/helloWorld.c)
+add_executable(task1 src/uebungen/01/task1.c)
+add_executable(fizzBuzz src/uebungen/01/fizzBuzz.c)
+add_executable(pyramid src/uebungen/01/pyramid.c)
+add_executable(count src/abgaben/02/count.c)
+add_executable(loop src/abgaben/02/loop.c)
+add_executable(perm src/abgaben/02/perm.c)
+add_executable(wuerfel src/abgaben/02/wuerfel.c)
+add_executable(prim1 src/abgaben/02/prim1.c)
+add_executable(graph src/abgaben/02/graph.c)
