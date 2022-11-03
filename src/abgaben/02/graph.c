@@ -9,7 +9,7 @@ int roundF(double x) {
 double function(double x) {
 //  return x;                         // Linear
 //  return 4;                         // Constant
-    return pow(0.5 * x, 2) + 1; // Quadratic
+    return pow(0.5 * x, 2) + 1;       // Quadratic
 //  return pow(-0.4 * x, 3);          // Cubic
 //  return pow(2.7, x);               // Exponential
 //  return sin(x);                    // Trigonometric
