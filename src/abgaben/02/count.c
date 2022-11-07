@@ -26,6 +26,6 @@ int main(void) {
         zeroes = (int)(sizeof(int) * 8) - ones;
     }
     printf("%d\n", integer);
-    printf("1s: %d | 0s: %d\n", ones, (int)(sizeof(int) * 8) - ones);
+    printf("1s: %d | 0s: %d\n", ones, zeroes);
 }
 
