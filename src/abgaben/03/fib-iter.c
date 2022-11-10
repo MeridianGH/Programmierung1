@@ -15,10 +15,10 @@ unsigned long long fib(int n) {
 }
 
 int main(void) {
-    printf("%llu\n", fib(7)); // 7th Fibonacci-Number
+    printf("%llu\n", fib(7)); // 7th Fibonacci number
 
-    // Calculate maximum possible Fibonacci-Number.
-    printf("Calculating increasing Fibonacci-Numbers:\n");
+    // Calculate maximum possible Fibonacci number.
+    printf("Calculating increasing Fibonacci numbers:\n");
     int i = 0;
     unsigned long long result = 0;
     while (result != -1) {
@@ -31,6 +31,8 @@ int main(void) {
     // per-digit in an array and perform addition by summing up the two values corresponding to the same
     // place in the decimal system and carrying over any overflow into the next addition.
     // This is comparable to column addition taught in schools.
+    // In order to optimize calculation of larger Fibonacci numbers, I would probably set up caching
+    // to reduce required calculations by getting them from the cache.
 
     return 0;
 }
