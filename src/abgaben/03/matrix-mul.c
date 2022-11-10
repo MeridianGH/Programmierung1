@@ -5,8 +5,9 @@ void printMatrix(int matrix[4][4]) {
     for (int i = 0; i < 4; ++i) {
         printf("| ");
         for (int j = 0; j < 4; ++j) {
-            printf(matrix[i][j] > 0 ? " " : "");
-            printf(abs(matrix[i][j]) != 10 ? " %d " : "%d ", matrix[i][j]);
+            printf(matrix[i][j] < 0 ? "" : " ");
+            for (int k = 10; k <= 100; k *= 10) { printf(abs(matrix[i][j]) < k ? " " : ""); }
+            printf("%d ", matrix[i][j]);
         }
         printf(" |\n");
     }
