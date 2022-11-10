@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.23)
 project(Programmierung1 C)
 
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -pedantic -std=c99")
+set(CMAKE_C_COMPILER "../tools/Strawberry Perl/c/bin/gcc.exe")
+set(CMAKE_C_FLAGS "-Wall -Wextra -Werror -pedantic -std=c99")
 
 add_executable(helloWorld src/helloWorld.c)
 add_executable(task1 src/uebungen/01/task1.c)
