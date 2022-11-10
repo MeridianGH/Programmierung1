@@ -2,10 +2,11 @@
 #include <limits.h>
 
 unsigned long long fib(int n) {
+    if (n <= 1) { return n; }
     unsigned long long prev1 = 1; // n - 1
     unsigned long long prev2 = 0; // n - 2
-    unsigned long long fib = 1;
-    for (int i = 0; i < n; ++i) {
+    unsigned long long fib;
+    for (int i = 1; i < n; ++i) {
         if (prev1 > ULONG_LONG_MAX - prev2) { return -1; } // Addition would result in overflow.
         fib = prev1 + prev2;
         prev2 = prev1;
