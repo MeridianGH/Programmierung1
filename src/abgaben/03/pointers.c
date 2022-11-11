@@ -18,7 +18,7 @@ int main(void) {
     printf("%p\n", (void*)zeiger);
     // 0xABCDEFA8 | "zeiger" has been incremented twice and is now pointing to the location two bytes higher than it started.
     printf("%c\n", *zeiger++);
-    // e | Due to operator precedence "zeiger" is returned and dereferenced first and incremented afterwards, so this prints the old value but still increments the pointer.
+    // e | Due to operator precedence "zeiger" is incremented first and then dereferenced, but as the "++" is after "zeiger", this prints the old value but still increments the pointer.
     printf("%c\n", --(*zeiger));
     // c | "zeiger" is first dereferenced (which returns d) and then decremented by one. This results in setting the value of the location to "c" and printing the character.
     printf("%c\n", *zeiger);
