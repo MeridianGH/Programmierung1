@@ -1,6 +1,5 @@
 cmake-build-debug
 .idea
-/tools/Strawberry Perl/
-/tools/uebungsaufgaben/
+/tools/*
 a.exe
 /.vscode/
