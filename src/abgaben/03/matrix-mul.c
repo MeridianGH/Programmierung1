@@ -38,7 +38,8 @@ int main(void) {
     }
 
     printMatrix(a);
+    printf("            *\n\n");
     printMatrix(b);
-
+    printf("            =\n\n");
     multiplyMatrices(a, b);
 }
