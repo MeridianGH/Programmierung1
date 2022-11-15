@@ -11,10 +11,6 @@ void printArray(int * array, int arrayLength) {
 
 }
 
-void popElement(int * array, int index, int arrayLength) {
-    for (int i = index; i < arrayLength; i++) { array[i] = array[i + 1]; }
-}
-
 int main(void) {
     int n = 200 - 1;
     int numbers[n];
@@ -26,13 +22,13 @@ int main(void) {
     int removed = 0;
     // As soon as p^2 is larger than n, there will be no more multiples in the list, so we're done sieving.
     while (pow(p, 2) <= n) {
-        // Remove multiples
+        // Remove multiples.
         for (int j = 2; j < n; j++) {
             for (int i = 0; i < n; i++) {
                 if (j * p == numbers[i]) { numbers[i] = 0; }
             }
         }
-        // Find next prime
+        // Find next prime.
         for (int i = 0; i < n; i++) {
             if (numbers[i] != 0 && i > lastPrime) {
                 p = numbers[i];
@@ -40,7 +36,7 @@ int main(void) {
                 break;
             }
         }
-        // Remove 0s
+        // Remove 0s from array.
         removed = 0;
         for (int i = 0; i < n; i++) {
             if (numbers[i] == 0) {
@@ -49,7 +45,7 @@ int main(void) {
             }
         }
     }
-    // Truncate array
+    // Truncate array to new size.
     n -= removed - 1;
     printArray(numbers, n);
 }
