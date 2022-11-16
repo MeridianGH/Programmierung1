@@ -49,8 +49,8 @@ int main(void) {
         // The binomial coefficient will be the largest, when we use (n, ⌊n/2⌋).
         // C implicitly rounds down when we divide two integers.
         // If we can compute this value successfully, all other values for this n will be computable as well, as they are guaranteed to be lower.
-        result = binomCoef(n, (n / 2));
         n++;
+        result = binomCoef(n, (n / 2));
     }
-    printf("Largest possible a: %d\n", n);
+    printf("Largest possible a: %d\n", n - 1); // Subtract 1 as we add one too many with the last loop.
 }
