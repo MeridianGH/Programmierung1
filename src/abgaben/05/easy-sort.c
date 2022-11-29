@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void sort(int array[], size_t length) {
     // Insertion sort.
@@ -24,13 +25,15 @@ void printArray(int array[], size_t length) {
 }
 
 int main(void) {
-    const size_t length = 100;
-    int array[length];
+    const size_t length = 1000000;
+    int *array = (int*)malloc(length * sizeof(int));
     for (size_t i = 0; i < length; i++) { array[i] = rand(); }
 
-    printArray(array, length);
+//    printArray(array, length);
 
+    clock_t start = clock();
     sort(array, length);
+    printf("%.0fms", (double)(clock() - start));
 
-    printArray(array, length);
+//    printArray(array, length);
 }
