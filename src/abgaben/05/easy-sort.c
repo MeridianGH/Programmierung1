@@ -25,15 +25,18 @@ void printArray(int array[], size_t length) {
 }
 
 int main(void) {
+    // Demonstrate with small example array.
+    int smallArray[] = {5, 3, 1,2, 4};
+    printArray(smallArray, 5);
+    sort(smallArray, 5);
+    printArray(smallArray, 5);
+
+    // Allocate large array.
     const size_t length = 1000000;
     int *array = (int*)malloc(length * sizeof(int));
     for (size_t i = 0; i < length; i++) { array[i] = rand(); }
 
-//    printArray(array, length);
-
     clock_t start = clock();
     sort(array, length);
-    printf("%.0fms", (double)(clock() - start));
-
-//    printArray(array, length);
+    printf("%dms", (int)(clock() - start));
 }
