@@ -1,25 +1,27 @@
 #include <stdio.h>
 #include <time.h>
 
-int height = 28; // Use height smaller than 19 in order to print changes.
-int stacks[3][28];
+// Use STACK_HEIGHT smaller than or equal to 18 in order to print changes.
+#define STACK_HEIGHT 28
+
+int stacks[3][STACK_HEIGHT];
 int operations = 0;
 
 void printStacks(void) {
-    if (height > 18) { printf("Unable to print properly for large sizes. Skipping.\n"); return; }
+    if (STACK_HEIGHT > 18) { printf("Unable to print properly for large sizes. Skipping.\n"); return; }
     // Inversely iterate over stacks in order to print stacks vertically.
-    for (int j = height - 1; j >= 0; j--) {
+    for (int j = STACK_HEIGHT - 1; j >= 0; j--) {
         for (int i = 0; i < 3; i++) {
             // Format empty slot.
             if (stacks[i][j] == 0) {
-                for (int space = 0; space < height; space++) { printf(" "); }
+                for (int space = 0; space < STACK_HEIGHT; space++) { printf(" "); }
                 printf("||");
-                for (int space = 0; space < height; space++) { printf(" "); }
+                for (int space = 0; space < STACK_HEIGHT; space++) { printf(" "); }
                 continue;
             }
             // Format ring with given radius.
             for (int space = 0; space < stacks[i][j]; space++) { printf(" "); }
-            for (int equals = 0; equals < (height * 2) - (2 * stacks[i][j]) + 2; equals++) { printf("="); }
+            for (int equals = 0; equals < (STACK_HEIGHT * 2) - (2 * stacks[i][j]) + 2; equals++) { printf("="); }
             for (int space = 0; space < stacks[i][j]; space++) { printf(" "); }
         }
         printf("\n");
@@ -35,9 +37,9 @@ void move(size_t n, char fromStack, char toStack, char tempStack) { // NOLINT(mi
     move(n - 1, fromStack, tempStack, toStack);
 
     // Iterate over stacks to find the highest element and lowest target position.
-    for (int i = height - 1; i >= 0; i--) {
+    for (int i = STACK_HEIGHT - 1; i >= 0; i--) {
         if (stacks[fromStack - 1][i] == 0) { continue; }
-        for (int j = 0; j < height; j++) {
+        for (int j = 0; j < STACK_HEIGHT; j++) {
             if (stacks[toStack - 1][j] != 0) { continue; }
 
             // Copy element and set original position to 0.
@@ -48,8 +50,9 @@ void move(size_t n, char fromStack, char toStack, char tempStack) { // NOLINT(mi
         break;
     }
 
-//    printf("From %d to %d:\n", fromStack, toStack); // Uncomment to print steps.
-//    printStacks(); // Uncomment to print steps.
+    // Uncomment both to print steps:
+//    printf("From %d to %d:\n", fromStack, toStack);
+//    printStacks();
     operations++;
 
     // Move n - 1 elements from temporary stack to target stack.
@@ -58,7 +61,7 @@ void move(size_t n, char fromStack, char toStack, char tempStack) { // NOLINT(mi
 
 int main(void) {
     // Fill first stack with rings of increasing size.
-    for (int i = 0; i < height; i++) { stacks[0][i] = i + 1; }
+    for (int i = 0; i < STACK_HEIGHT; i++) { stacks[0][i] = i + 1; }
 
     // Print moving two elements from stack 1 to stack 2.
     printStacks();
@@ -68,10 +71,10 @@ int main(void) {
 
     // Calculate runtimes for n = {4, ..., 28}.
     printf("\nRuntimes:\n");
-    for (int i = 4; i <= height; i++) {
+    for (int i = 4; i <= STACK_HEIGHT; i++) {
         // Reset stacks to default.
-        for (int j = 0; j < height; j++) { stacks[0][j] = j + 1; }
-        for (int j = 0; j < 2; j++) { for (int k = 0; k < height; k++) { stacks[j + 1][k] = 0; } }
+        for (int j = 0; j < STACK_HEIGHT; j++) { stacks[0][j] = j + 1; }
+        for (int j = 0; j < 2; j++) { for (int k = 0; k < STACK_HEIGHT; k++) { stacks[j + 1][k] = 0; } }
 
         // Measure runtime.
         // Observation: Runtime usually doubles when increasing n by 1. O(n) = 2^n.

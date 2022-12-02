@@ -14,7 +14,6 @@ add_executable(perm src/abgaben/02/perm.c)
 add_executable(wuerfel src/abgaben/02/wuerfel.c)
 add_executable(prim1 src/abgaben/02/prim1.c)
 add_executable(graph src/abgaben/02/graph.c)
-
 add_executable(fib-iter src/abgaben/03/fib-iter.c)
 add_executable(median src/abgaben/03/median.c)
 add_executable(matrix-mul src/abgaben/03/matrix-mul.c)
