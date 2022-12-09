@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
-#include <math.h>
 #include <malloc.h>
 
 typedef struct {
     char **field;
-    size_t size;
+    const int size;
 } Board;
 
 typedef struct {
@@ -102,7 +101,7 @@ state checkGameState(Board *board, Player player) {
     return loss;
 }
 
-void ttt(Board *board, Player players[], size_t playerCount) {
+void ttt(Board *board, Player players[], int playerCount) {
     state gameState;
     while (true) {
         int i;
@@ -144,12 +143,15 @@ int main(void) {
     for (int i = 0; i < playerCount; i++) {
         char *name = calloc(100, sizeof(char));
         char symbol;
+
         printf("Player %d name?\n", i + 1);
         scanf(" %s", &name[0]);
         printf("Player %d symbol?\n", i + 1);
         scanf(" %c", &symbol);
+
         Player player = { name, symbol };
         players[i] = player;
+
         printf("Player %d: %s (%c)\n", i + 1, player.name, player.symbol);
     }
 
